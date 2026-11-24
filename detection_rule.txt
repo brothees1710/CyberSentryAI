@@ -1,0 +1,20 @@
+
+
+title: SSH Failed Password Authentication
+id: 8f3a2b1c-4d5e-6f7a-8b9c-0d1e2f3a4b5c
+status: experimental
+description: Detects failed SSH password authentication attempts on Linux systems, which may indicate brute force attacks or credential stuffing.
+author: Detection Engineer
+date: 2023-10-27
+logsource:
+    category: authentication
+    product: linux
+    service: sshd
+detection:
+    selection:
+        message|contains: 'Failed password'
+    condition: selection
+level: medium
+tags:
+    - attack.credential_access
+    - attack.t1110
